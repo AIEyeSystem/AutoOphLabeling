@@ -29,7 +29,7 @@ class Annotation:
         self.label_path = label_path
         self.note = ''
 
-        image = np.array(Image.open(image_path))
+        image = np.array(Image.open(image_path).convert('RGB'))
         if image.ndim == 3:
             self.height, self.width, self.depth = image.shape
         elif image.ndim == 2:

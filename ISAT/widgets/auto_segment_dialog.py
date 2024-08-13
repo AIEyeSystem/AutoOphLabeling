@@ -49,7 +49,7 @@ class AutoSegmentThread(QThread):
             self.message.emit(-1, -1, '{}'.format('Sam encoding...'))
             # sam
             try:
-                image_data = np.array(Image.open(image_path))
+                image_data = np.array(Image.open(image_path).convert("RGB"))
                 self.mainwindow.segany.set_image(image_data)
             except Exception as e:
                 self.message.emit(-1, -1, 'Sam error when encoding image: {}'.format(e))

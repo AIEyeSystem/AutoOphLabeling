@@ -101,7 +101,7 @@ class SegAnyThread(QThread):
 
                     image_path = os.path.join(self.mainwindow.image_root, self.mainwindow.files_list[index])
                     self.results_dict[index] = {}
-                    image_data = np.array(Image.open(image_path))
+                    image_data = np.array(Image.open(image_path).convert("RGB"))
                     try:
                         features, original_size, input_size = self.sam_encoder(image_data)
                     except Exception as e:
@@ -720,7 +720,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             return
         try:
             file_path = os.path.join(self.image_root, self.files_list[index])
-            image_data = Image.open(file_path)
+            image_data = Image.open(file_path).convert("RGB")
 
             self.png_palette = image_data.getpalette()
             if self.png_palette is not None and file_path.endswith('.png'):

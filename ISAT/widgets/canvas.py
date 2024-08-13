@@ -51,7 +51,7 @@ class AnnotationScene(QtWidgets.QGraphicsScene):
         if self.mainwindow.use_segment_anything:
             self.mainwindow.segany.reset_image()
 
-        self.image_data = np.array(Image.open(image_path))
+        self.image_data = np.array(Image.open(image_path).convert("RGB"))
 
         self.image_item = QtWidgets.QGraphicsPixmapItem()
         self.image_item.setZValue(0)
